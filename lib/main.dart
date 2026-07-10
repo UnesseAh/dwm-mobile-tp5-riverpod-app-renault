@@ -26,11 +26,16 @@ class CounterPage extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           FloatingActionButton.small(
-            onPressed: () {},
+            onPressed: () {
+              ref.read(counterProvider.notifier).decrement();
+            },
             child: Icon(Icons.remove),
           ),
           FloatingActionButton.small(
-            onPressed: () {},
+            onPressed: () {
+              // ref.invalidate(counterProvider.notifier).increment();
+              ref.refresh(counterProvider);
+            },
             child: Icon(Icons.refresh),
           ),
         ],

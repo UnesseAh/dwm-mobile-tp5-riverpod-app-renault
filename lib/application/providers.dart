@@ -7,14 +7,20 @@ class CounterNotifier extends Notifier<int> {
   }
 
   void increment() {
-    state = state + 1;
+    int step = ref.read(stepProvider);
+    state = state + step;
   }
 
   void decrement() {
-    state = state - 1;
+    int step = ref.read(stepProvider);
+    state = state - step;
   }
 }
 
 final counterProvider = NotifierProvider<CounterNotifier, int>(
   () => CounterNotifier(),
 );
+
+final stepProvider = Provider<int>((ref) {
+  return 2;
+});

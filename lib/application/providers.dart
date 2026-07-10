@@ -14,3 +14,7 @@ class CounterNotifier extends Notifier<int> {
     state = state - 1;
   }
 }
+
+final counterProvider = NotifierProvider<CounterNotifier, int>(
+  () => CounterNotifier(),
+);
